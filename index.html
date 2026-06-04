@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para alguien especial</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b);
+            --card-bg: rgba(255, 255, 255, 0.07);
+            --card-border: rgba(255, 255, 255, 0.15);
+            --accent-color: #3b82f6; 
+            --accent-hover: #2563eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: #f8fafc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- FONDO DE CORAZONES EN MOVIMIENTO --- */
+        .hearts-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none; /* Para que no estorben al hacer clic */
+        }
+
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            color: rgba(239, 68, 68, 0.15); /* Rojo sutil con transparencia para no saturar */
+            font-size: 24px;
+            animation: floatUp 8s linear infinite;
+        }
+
+        /* Variaciones de velocidad, tamaño y posición para los corazones */
+        .floating-heart:nth-child(1) { left: 10%; font-size: 20px; animation-duration: 10s; animation-delay: 0s; }
+        .floating-heart:nth-child(2) { left: 25%; font-size: 35px; animation-duration: 12s; animation-delay: 2s; color: rgba(239, 68, 68, 0.08); }
+        .floating-heart:nth-child(3) { left: 45%; font-size: 18px; animation-duration: 9s; animation-delay: 4s; }
+        .floating-heart:nth-child(4) { left: 65%; font-size: 28px; animation-duration: 11s; animation-delay: 1s; }
+        .floating-heart:nth-child(5) { left: 80%; font-size: 40px; animation-duration: 14s; animation-delay: 5s; color: rgba(239, 68, 68, 0.06); }
+        .floating-heart:nth-child(6) { left: 90%; font-size: 22px; animation-duration: 8s; animation-delay: 3s; }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            z-index: 2; /* Por encima de los corazones */
+        }
+
+        /* --- CONTENEDOR DE LA IMAGEN --- */
+        .image-frame {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: floatImg 4s ease-in-out infinite;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- TEXTOS --- */
+        .content h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .content p {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* --- BOTÓN --- */
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        /* --- ANIMACIÓN DE LA IMAGEN --- */
+        @keyframes floatImg {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa de fondo con corazones flotantes -->
+    <div class="hearts-bg">
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">❤️</div>
+        <div class="floating-heart">❤️</div>
+    </div>
+
+    <!-- Tarjeta Principal -->
+    <div class="container">
+        <div class="image-frame">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREcxF-JLSDre01F225wNOqKvMKajB--r3KzQ&s" alt="Snoopy">
+        </div>
+
+        <div class="content">
+            <h1 id="title">Un detalle para la más bonita... ✨</h1>
+            <p id="desc">Vi esto y automáticamente pensé en ti, porque cosas hermosas solo me recuerdan a la niña más hermosa. Quería enviarte este pequeño detalle para recordarte lo especial que eres y sacarte una sonrisa hoy. ❤️</p>
+			<br>
+			<p>Att: P.Zurita✨❤️</p>
+        </div>
+
+        <button class="btn" id="action-btn" onclick="mostrarSorpresa()">Haz clic aquí</button>
+    </div>
+
+    <script>
+        function mostrarSorpresa() {
+            document.getElementById('title').innerText = "Me gustas muchísimo... 😊";
+            document.getElementById('desc').innerText = "Cada momento que hablo contigo o compartimos juntos se vuelve el mejor de mi día. Me encantaría invitarte a salir por un café, a comer o a donde tú prefieras... ¿Te gustaría acompañarme pronto, bonita?";
+            document.getElementById('action-btn').style.display = "none";
+            
+            // Detalle extra: al hacer clic, los corazones del fondo brillan un poco más intensamente
+            const hearts = document.querySelectorAll('.floating-heart');
+            hearts.forEach(heart => {
+                heart.style.color = "rgba(239, 68, 68, 0.35)";
+            });
+        }
+    </script>
+
+</body>
+</html>
